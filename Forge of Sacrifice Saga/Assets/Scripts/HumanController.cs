@@ -10,15 +10,12 @@ public class HumanController : MonoBehaviour {
 	[RangeAttribute(0, 1)]
 	public float SpeedScale;
 	
-	public GameObject debugTarget;
-	public GameObject testBuildingObject;
-	
 	private int tick = 0;
 	private Vector3 moveDirection = Vector3.zero;
 
 	// Use this for initialization
 	void Start () {
-		Buildings.Add(testBuildingObject);	
+		
 	}
 	
 	// Update is called once per frame
@@ -27,8 +24,7 @@ public class HumanController : MonoBehaviour {
 		GameObject clostestBuilding = GetClosestBuilding(currentHumanPos);
 		if (Vector3.Distance(currentHumanPos, clostestBuilding.transform.position) > attractionRange)
 		{
-			moveDirection = Vector3.Normalize(clostestBuilding.transform.position - currentHumanPos);
-			debugTarget.transform.position = clostestBuilding.transform.position; 
+			moveDirection = Vector3.Normalize(clostestBuilding.transform.position - currentHumanPos); 
 		} else {
 			tick++;
 			if (tick > tickToMoveChange)
