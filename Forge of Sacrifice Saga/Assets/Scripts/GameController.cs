@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class GameController : MonoBehaviour {
     // Some Stuff for the Timecicle
@@ -9,11 +9,29 @@ public class GameController : MonoBehaviour {
     private float lastGameTime;
     private int lastDay, lastWeek, lastMonth, lastYear, lastHour;
 
+    // Ressources
+    public int Food;
+    public int Satisfaction;
+    public int Humans;
+    public int Wood;
+    public int SacrificePoints;
+
+    // HumanControlls
+    private int FreeHumans;
+
+    // Building Controlls
+    public FarmController[] Farms;
+
     // Use this for initialization
     void Start () {
         Day = 1; Week = 1; Month = 1; Year = 1; Hour = 1;
         lastDay = 1; lastWeek = 1; lastMonth = 1; lastYear = 1; lastHour = 0;
         lastGameTime = Time.time;
+        // Ressource initialization
+        Food = 0;
+        Satisfaction = 100;
+        Wood = 0;
+        SacrificePoints = 0;
 	}
 	
 	// Update is called once per frame
@@ -61,6 +79,13 @@ public class GameController : MonoBehaviour {
         if (lastDay != Day)
         {
             //Debug.Log("Day change");
+            foreach(FarmController farm in Farms)
+            {
+                if (farm.IsActive)
+                {
+                    Food += farm.foodPerDay;
+                }
+            }
         }
         // Code, which runs once per week
         if (lastWeek != Week)
