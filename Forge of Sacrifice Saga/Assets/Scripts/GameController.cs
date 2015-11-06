@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour {
     private int FreeHumans;
 
     // Building Controlls
-    public FarmController[] Farms;
+    public List<Building> Buildings;
 
     // Use this for initialization
     void Start () {
@@ -79,11 +79,11 @@ public class GameController : MonoBehaviour {
         if (lastDay != Day)
         {
             //Debug.Log("Day change");
-            foreach(FarmController farm in Farms)
+            foreach(Building building in Buildings)
             {
-                if (farm.IsActive)
+                if (building.IsActive)
                 {
-                    Food += farm.foodPerDay;
+                    Food += building.foodPerDay;
                 }
             }
         }
