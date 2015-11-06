@@ -3,13 +3,12 @@ using System.Collections.Generic;
 
 public class HumanController : MonoBehaviour {
 	
-	public List<GameObject> Buildings = new List<GameObject>();
+	private List<Building> Buildings = GameObject.Find("GameController").Buildings;
 	public float attractionRange;
 	public Rect movementArea;
 	public int tickToMoveChange;
 	[RangeAttribute(0, 1)]
 	public float SpeedScale;
-	
 	private int tick = 0;
 	private Vector3 moveDirection = Vector3.zero;
 
