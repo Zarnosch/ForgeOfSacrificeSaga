@@ -17,17 +17,26 @@ public class GameController : MonoBehaviour {
     public int SacrificePoints;
 
     // HumanControlls
-    private int FreeHumans;
+    public int FreeHumans;
     public GameObject HumanPrefab;
-    private List<GameObject> Humans = new List<GameObject>();
+    public List<GameObject> Humans = new List<GameObject>();
+
 
     // Building Controlls
     public List<Building> Buildings;
 
+    // UiAcress
+    UIController UIFoo;
+
     // Use this for initialization
     void Start () {
+        // Get some Gamestuff
+        UIFoo = GameObject.Find("UI").GetComponent<UIController>();
+
+        // Time Initialize
         Day = 1; Week = 1; Month = 1; Year = 1; Hour = 1;
         lastDay = 1; lastWeek = 1; lastMonth = 1; lastYear = 1; lastHour = 0;
+        UIFoo.Day_ = Day; UIFoo.Hour_ = Hour; UIFoo.Week_ = Week; UIFoo.Month_ = Month; UIFoo.Year_ = Year;
         lastGameTime = Time.time;
         // Ressource initialization
         Food = 0;
@@ -35,9 +44,12 @@ public class GameController : MonoBehaviour {
         Wood = 0;
         SacrificePoints = 0;
         
-        HumanPrefab.GetComponent<HumanController>().targetBuilding = Buildings[0];
-        HumanPrefab.GetComponent<HumanController>().newTargetSet = true;
-        makeHuman();
+        HumanPrefab.GetComponent<HumanController>().SetNewTarget(Buildings[0]);
+        
+        for (int i = 0; i < 10; i++)
+        {
+            makeHuman();
+        }
 	}
 	
 	// Update is called once per frame
@@ -81,6 +93,8 @@ public class GameController : MonoBehaviour {
         if(lastHour != Hour)
         {
             //Debug.Log("Hour change " + Hour);
+            UIFoo.Hour_ = Hour;
+            UIFoo.Zufriedenheit_ = Satisfaction;
         }
         // Code, which runs once per day
         if (lastDay != Day)
@@ -101,20 +115,26 @@ public class GameController : MonoBehaviour {
                     }
                 }
             }
+            UIFoo.Nahrung_ = Food;
+            UIFoo.Holz_ = Wood;
+            UIFoo.Day_ = Day;
         }
         // Code, which runs once per week
         if (lastWeek != Week)
         {
+            UIFoo.Week_ = Week;
             //Debug.Log("Week change");
         }
         // Code, which runs once per month
         if (lastMonth != Month)
         {
+            UIFoo.Month_ = Month;
             //Debug.Log("Month change");
         }
         // Code, which runs once per year
         if (lastYear != Year)
         {
+            UIFoo.Year_ = Year;
             //Debug.Log("Year change");
         }
 

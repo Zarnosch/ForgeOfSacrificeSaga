@@ -89,8 +89,8 @@ public class HumanController : MonoBehaviour {
 		transform.position = moveDirection;
 	}
 	
-	public void SetNewTarget() {
-		targetBuilding = Buildings[Random.Range(0, Buildings.Count())];
+	public void SetNewTarget(Building target) {
+		targetBuilding = target;//Buildings[Random.Range(0, Buildings.Count())];
 		reachedTarget = false;
 		duempeln = false;
 		newTargetSet = true;	
