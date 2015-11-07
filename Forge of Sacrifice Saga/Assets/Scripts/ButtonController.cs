@@ -20,13 +20,25 @@ public class ButtonController : MonoBehaviour {
         popup.SetActive(false);
     }
 
-    public void assignWorker()
+    public void AssignWorker()
     {
         if(SelectedBuilding.GetComponent<Building>().CurrentWorker < SelectedBuilding.GetComponent<Building>().MaxWorker && GameController.GetFreeHumans().Count > 0)
         {
             SelectedBuilding.GetComponent<Building>().CurrentWorker += 1;
             GameController.FreeHumansL[0].IsWorking = true;
             GameController.FreeHumansL[0].SetNewTarget(SelectedBuilding.GetComponent<Building>());
+        }
+        SelectedBuilding.GetComponent<clickforhouseinfos>().updateInfo();
+
+    }
+    public void RemoveWorker()
+    {
+        if (SelectedBuilding.GetComponent<Building>().CurrentWorker > 0)
+        {
+            SelectedBuilding.GetComponent<Building>().CurrentWorker -= 1;
+            //foreach()
+            //GameController.WorkingHumans
+            //GameController.FreeHumansL[0].SetNewTarget(SelectedBuilding.GetComponent<Building>());
         }
         SelectedBuilding.GetComponent<clickforhouseinfos>().updateInfo();
 

@@ -44,6 +44,7 @@ MonoBehaviour:
   SpeedScale: .00300000003
   showGizmos: 1
   duempelOffset: 1.5
+  IsWorking: 0
   duempelTimerMax: 250
   targetBuilding: {fileID: 0}
   newTargetSet: 1
