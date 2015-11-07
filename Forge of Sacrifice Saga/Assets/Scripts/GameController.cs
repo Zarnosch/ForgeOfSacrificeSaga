@@ -52,6 +52,7 @@ public class GameController : MonoBehaviour {
 
         HumanPrefab.GetComponent<HumanController>().SetNewTarget(Buildings[0]);
         
+
         for (int i = 0; i < 3; i++)
         {
             makeHuman();

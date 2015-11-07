@@ -45,7 +45,7 @@ MonoBehaviour:
   showGizmos: 1
   duempelOffset: 1.5
   IsWorking: 0
-  duempelTimerMax: 250
+  duempelTimerMax: 320
   targetBuilding: {fileID: 0}
   newTargetSet: 1
 --- !u!212 &21251456
@@ -95,7 +95,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: duempelTimerMax
-      value: 250
+      value: 320
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
