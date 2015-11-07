@@ -43,8 +43,10 @@ MonoBehaviour:
   visitedRange: .5
   SpeedScale: .00300000003
   showGizmos: 1
-  duempelOffset: 0
+  duempelOffset: 1.5
+  duempelTimerMax: 250
   targetBuilding: {fileID: 0}
+  newTargetSet: 1
 --- !u!212 &21251456
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -85,6 +87,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SpeedScale
       value: .00300000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: duempelOffset
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: duempelTimerMax
+      value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -36,6 +36,7 @@ public class GameController : MonoBehaviour {
         SacrificePoints = 0;
         
         HumanPrefab.GetComponent<HumanController>().targetBuilding = Buildings[0];
+        HumanPrefab.GetComponent<HumanController>().newTargetSet = true;
         makeHuman();
 	}
 	
