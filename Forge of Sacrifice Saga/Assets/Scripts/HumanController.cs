@@ -10,25 +10,21 @@ public class HumanController : MonoBehaviour {
 	public bool showGizmos = true;
 	public float duempelOffset;
     public bool IsWorking;
+	public float duempelTimerMax;
 	
 	[HideInInspector]
 	public Building targetBuilding;
 	[HideInInspector]
-	public Building TargetBuilding 
-	{
-		get { return targetBuilding; }
-		set { 
-				targetBuilding = value;
-				newTargetSet = true; 
-			}
-	}
+	public bool newTargetSet;
 	
-	private bool newTargetSet;
 	private float tick = 0;
+	private float duempelTimer = 0;
+	private bool duempeln = false;
 	private Vector3 moveDirection = Vector3.zero;
 	private List<Building> Buildings = new List<Building>();
 	
-	private bool visited = true;
+	private bool calculateMovement = false;
+	private bool reachedTarget = false;
 	private Bezier movePath = new Bezier(Vector3.zero, Vector3.zero, Vector3.zero, Vector3.zero); 
 	
 	
@@ -43,12 +39,10 @@ public class HumanController : MonoBehaviour {
 		Vector3 currentHumanPos = transform.position;
 		tick += SpeedScale;
 		
-		if (!visited)
-		{
+		if (calculateMovement) {
 			moveDirection = movePath.GetPointAtTime(Mathf.Lerp(0, 1, tick));
-		}
-		else 
-		{ //calculate new spline
+		} else if (!reachedTarget && !calculateMovement)
+		{
 			Building closestBuilding = GetClosestBuilding(currentHumanPos);
 		
 			var randomOtherBuildings = from build in Buildings where build != closestBuilding && build != targetBuilding select build;
@@ -56,18 +50,49 @@ public class HumanController : MonoBehaviour {
 			Building rndBuilding2 = randomOtherBuildings.ElementAt(Random.Range(0, randomOtherBuildings.Count()));
 			
 			movePath = new Bezier(currentHumanPos, rndBuilding1.transform.position, rndBuilding2.transform.position, targetBuilding.transform.position);
-			visited = false;
+			calculateMovement = true;
+		} else
+		{
+			Vector3 targetPos = targetBuilding.transform.position;
+			Rect duempelArea = new Rect(targetPos.x - duempelOffset, targetPos.y - duempelOffset, duempelOffset*2, duempelOffset*2);
+			movePath = new Bezier(currentHumanPos, 
+								new Vector3(duempelArea.x, duempelArea.y, currentHumanPos.z),
+								new Vector3(duempelArea.x, duempelArea.y + duempelArea.height, currentHumanPos.z),
+								new Vector3(duempelArea.x + duempelArea.width, duempelArea.y, currentHumanPos.z));
+			calculateMovement = true;
+			duempeln = true;
 		}
 		
-		if (Vector3.Distance(currentHumanPos, targetBuilding.transform.position) < visitedRange)
+		if (duempeln)
 		{
-			visited = true;
-			newTargetSet = false;
-			targetBuilding = Buildings[Random.Range(0, Buildings.Count())];
+			duempelTimer++;
+		}
+		if (duempeln && (duempelTimer > duempelTimerMax))
+		{
+			duempelTimer = 0;
 			tick = 0;
+			
+			calculateMovement = false;
+		}
+		
+		if ((Vector3.Distance(currentHumanPos, targetBuilding.transform.position) < visitedRange) && newTargetSet)
+		{
+			tick = 0;
+			
+			reachedTarget = true;
+			duempeln = true;
+			newTargetSet = false;
+			calculateMovement = false;
 		}
 		
 		transform.position = moveDirection;
+	}
+	
+	public void SetNewTarget(Building target) {
+		targetBuilding = target;//Buildings[Random.Range(0, Buildings.Count())];
+		reachedTarget = false;
+		duempeln = false;
+		newTargetSet = true;	
 	}
 	
 	private Building GetClosestBuilding(Vector3 humanPos) {

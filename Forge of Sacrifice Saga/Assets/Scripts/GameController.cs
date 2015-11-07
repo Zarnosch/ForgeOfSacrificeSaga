@@ -47,11 +47,12 @@ public class GameController : MonoBehaviour {
         Wood = 0;
         SacrificePoints = 0;
         
-        HumanPrefab.GetComponent<HumanController>().targetBuilding = Buildings[0];
+        HumanPrefab.GetComponent<HumanController>().SetNewTarget(Buildings[0]);
+        
         for (int i = 0; i < 10; i++)
         {
             makeHuman();
-        }        
+        }
 	}
 	
 	// Update is called once per frame
