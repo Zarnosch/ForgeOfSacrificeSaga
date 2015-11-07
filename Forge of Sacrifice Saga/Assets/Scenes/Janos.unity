@@ -1240,11 +1240,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 443496, guid: f96fc8d7806845842a8e6cc7f84aa565, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.02999997
       objectReference: {fileID: 0}
     - target: {fileID: 443496, guid: f96fc8d7806845842a8e6cc7f84aa565, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3.08999991
       objectReference: {fileID: 0}
     - target: {fileID: 443496, guid: f96fc8d7806845842a8e6cc7f84aa565, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1268,7 +1268,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 443496, guid: f96fc8d7806845842a8e6cc7f84aa565, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11414388, guid: f96fc8d7806845842a8e6cc7f84aa565, type: 2}
       propertyPath: PopupWindow
@@ -1277,6 +1277,18 @@ Prefab:
     - target: {fileID: 11414388, guid: f96fc8d7806845842a8e6cc7f84aa565, type: 2}
       propertyPath: Buildingtype
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 136440, guid: f96fc8d7806845842a8e6cc7f84aa565, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180414, guid: f96fc8d7806845842a8e6cc7f84aa565, type: 2}
+      propertyPath: m_Size.x
+      value: 2.79999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 6180414, guid: f96fc8d7806845842a8e6cc7f84aa565, type: 2}
+      propertyPath: m_Size.y
+      value: 2.0999999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f96fc8d7806845842a8e6cc7f84aa565, type: 2}
