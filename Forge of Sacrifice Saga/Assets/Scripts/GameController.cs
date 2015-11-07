@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour {
 
     // HumanControlls
     private int FreeHumans;
-    public Transform HumanPrefab;
+    public GameObject HumanPrefab;
     private List<GameObject> Humans = new List<GameObject>();
 
     // Building Controlls
@@ -34,6 +34,8 @@ public class GameController : MonoBehaviour {
         Satisfaction = 100;
         Wood = 0;
         SacrificePoints = 0;
+        
+        HumanPrefab.GetComponent<HumanController>().targetBuilding = Buildings[0];
         makeHuman();
 	}
 	
