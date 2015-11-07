@@ -138,6 +138,14 @@ public class GameController : MonoBehaviour {
                     {
                         Wood += building.RessPerDay;
                     }
+                    else if (building.Type == Building.BuildingType.Forrest)
+                    {
+                        Wood += building.RessPerDay;
+                    }
+                    else if (building.Type == Building.BuildingType.Fruits)
+                    {
+                        Food += building.RessPerDay;
+                    }
                 }
             }
             UIFoo.Nahrung_ = Food;

@@ -4,17 +4,36 @@ using System.Collections;
 public class Building : MonoBehaviour {
     public enum BuildingType
     {
-        Farm, Woodcutter, MainBuilding
+        Farm, Woodcutter, MainBuilding, Forrest, Fruits
     }
     public int MaxWorker;
     public int CurrentWorker;
+    [HideInInspector]
     public int Productivity;
     public bool IsActive;
     public int RessPerDay;
     public BuildingType Type;
 	// Use this for initialization
 	void Start () {
-        Productivity = 1;
+        switch (Type)
+        {
+            case BuildingType.Farm:
+                Productivity = 2;
+                break;
+            case BuildingType.Forrest:
+                Productivity = 1;
+                break;
+            case BuildingType.Woodcutter:
+                Productivity = 2;
+                break;
+            case BuildingType.MainBuilding:
+                Productivity = 0;
+                break;
+            case BuildingType.Fruits:
+                Productivity = 1;
+                break;
+        }
+        
         IsActive = true;
         CurrentWorker = 0;
 	}

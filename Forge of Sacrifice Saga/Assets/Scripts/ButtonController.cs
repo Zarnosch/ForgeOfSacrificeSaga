@@ -57,11 +57,12 @@ public class ButtonController : MonoBehaviour {
         if(GameController.FreeHumans > 0)
         {
             GameObject.Destroy(GameController.FreeHumansL[0].gameObject);
+            GameController.UpdateHumans();
+            SelectedBuilding.GetComponent<clickforhouseinfos>().updateInfo();
+            GameController.Satisfaction += 100;
+            GameController.Food += 5;
         }
-        GameController.UpdateHumans();
-        SelectedBuilding.GetComponent<clickforhouseinfos>().updateInfo();
-        GameController.Satisfaction += 100;
-        GameController.Food += 5;      
+    
     }
 
     public void MakeHuman()
