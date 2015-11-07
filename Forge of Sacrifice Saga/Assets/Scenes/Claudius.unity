@@ -85,12 +85,6 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &554506250 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11407798, guid: 04c5021ffe101304da0e559ba5d7bf77,
-    type: 2}
-  m_PrefabInternal: {fileID: 1127340957}
-  m_Script: {fileID: 11500000, guid: 3b4cbc386a734d049b12fe5e70510511, type: 3}
 --- !u!1 &580102215
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,9 +171,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
---- !u!114 &669192307 stripped
+--- !u!114 &596872348 stripped
 MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11407798, guid: 04c5021ffe101304da0e559ba5d7bf77,
+  m_PrefabParentObject: {fileID: 11458016, guid: 04c5021ffe101304da0e559ba5d7bf77,
     type: 2}
   m_PrefabInternal: {fileID: 1802978483}
   m_Script: {fileID: 11500000, guid: 3b4cbc386a734d049b12fe5e70510511, type: 3}
@@ -226,15 +220,17 @@ Prefab:
       propertyPath: m_Name
       value: Farm (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 466318, guid: 04c5021ffe101304da0e559ba5d7bf77, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 466318, guid: 04c5021ffe101304da0e559ba5d7bf77, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3.51999998
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04c5021ffe101304da0e559ba5d7bf77, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1259340476 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11407798, guid: 04c5021ffe101304da0e559ba5d7bf77,
-    type: 2}
-  m_PrefabInternal: {fileID: 1835837608}
-  m_Script: {fileID: 11500000, guid: 3b4cbc386a734d049b12fe5e70510511, type: 3}
 --- !u!1001 &1685792478
 Prefab:
   m_ObjectHideFlags: 0
@@ -281,6 +277,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04c5021ffe101304da0e559ba5d7bf77, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1767725528 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11458016, guid: 04c5021ffe101304da0e559ba5d7bf77,
+    type: 2}
+  m_PrefabInternal: {fileID: 1835837608}
+  m_Script: {fileID: 11500000, guid: 3b4cbc386a734d049b12fe5e70510511, type: 3}
 --- !u!1 &1782827552
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,12 +321,17 @@ MonoBehaviour:
   HumanCount: 0
   Wood: 0
   SacrificePoints: 0
+  FreeHumans: 0
+  WorkingHumans: 0
   HumanPrefab: {fileID: 198988, guid: 852e68e10d47b4eefb0b10ab961adea2, type: 2}
+  Humans: []
+  WorkingHumansL: []
+  FreeHumansL: []
   Buildings:
-  - {fileID: 669192307}
-  - {fileID: 554506250}
-  - {fileID: 1986035922}
-  - {fileID: 1259340476}
+  - {fileID: 1978606675}
+  - {fileID: 1767725528}
+  - {fileID: 2122759805}
+  - {fileID: 596872348}
 --- !u!4 &1782827554
 Transform:
   m_ObjectHideFlags: 0
@@ -376,6 +383,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 466318, guid: 04c5021ffe101304da0e559ba5d7bf77, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 466318, guid: 04c5021ffe101304da0e559ba5d7bf77, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -6.5999999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04c5021ffe101304da0e559ba5d7bf77, type: 2}
   m_IsPrefabParent: 0
@@ -422,12 +437,30 @@ Prefab:
       propertyPath: m_Name
       value: Farm (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 466318, guid: 04c5021ffe101304da0e559ba5d7bf77, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 466318, guid: 04c5021ffe101304da0e559ba5d7bf77, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -6.92999983
+      objectReference: {fileID: 0}
+    - target: {fileID: 466318, guid: 04c5021ffe101304da0e559ba5d7bf77, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.72000003
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04c5021ffe101304da0e559ba5d7bf77, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1986035922 stripped
+--- !u!114 &1978606675 stripped
 MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11407798, guid: 04c5021ffe101304da0e559ba5d7bf77,
+  m_PrefabParentObject: {fileID: 11458016, guid: 04c5021ffe101304da0e559ba5d7bf77,
     type: 2}
   m_PrefabInternal: {fileID: 1685792478}
+  m_Script: {fileID: 11500000, guid: 3b4cbc386a734d049b12fe5e70510511, type: 3}
+--- !u!114 &2122759805 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11458016, guid: 04c5021ffe101304da0e559ba5d7bf77,
+    type: 2}
+  m_PrefabInternal: {fileID: 1127340957}
   m_Script: {fileID: 11500000, guid: 3b4cbc386a734d049b12fe5e70510511, type: 3}

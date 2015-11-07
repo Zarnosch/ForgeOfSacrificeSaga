@@ -55,10 +55,10 @@ public class HumanController : MonoBehaviour {
 		{
 			Vector3 targetPos = targetBuilding.transform.position;
 			Rect duempelArea = new Rect(targetPos.x - duempelOffset, targetPos.y - duempelOffset, duempelOffset*2, duempelOffset*2);
-			movePath = new Bezier(currentHumanPos, 
-								new Vector3(duempelArea.x, duempelArea.y, currentHumanPos.z),
-								new Vector3(duempelArea.x, duempelArea.y + duempelArea.height, currentHumanPos.z),
-								new Vector3(duempelArea.x + duempelArea.width, duempelArea.y, currentHumanPos.z));
+			//movePath = new Bezier(currentHumanPos, 
+			//					new Vector3(duempelArea.x, duempelArea.y, currentHumanPos.z),
+			//					new Vector3(duempelArea.x, duempelArea.y + duempelArea.height, currentHumanPos.z),
+			//					new Vector3(duempelArea.x + duempelArea.width, duempelArea.y, currentHumanPos.z));
 			calculateMovement = true;
 			duempeln = true;
 		}
