@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour {
 
     // Building Controlls
     public List<Building> Buildings;
+    private ButtonController buttonController;
 
     // UiAcress
     UIController UIFoo;
@@ -35,6 +36,8 @@ public class GameController : MonoBehaviour {
     void Start () {
         // Get some Gamestuff
         UIFoo = GameObject.Find("UI").GetComponent<UIController>();
+        buttonController = GameObject.Find("ButtonController").GetComponent<ButtonController>();
+        buttonController.SelectedBuilding.GetComponent<clickforhouseinfos>().OnMouseDown();
 
         // Time Initialize
         Day = 1; Week = 1; Month = 1; Year = 1; Hour = 1;
@@ -46,10 +49,10 @@ public class GameController : MonoBehaviour {
         Satisfaction = 100;
         Wood = 0;
         SacrificePoints = 0;
-        
+
         HumanPrefab.GetComponent<HumanController>().SetNewTarget(Buildings[0]);
         
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 3; i++)
         {
             makeHuman();
         }
@@ -58,14 +61,18 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // Update every frame
+        /*
         FreeHumans = GetFreeHumans().Count;
         WorkingHumans = GetWorkingHumans().Count;
         HumanCount = Humans.Count;
         WorkingHumansL = GetWorkingHumans();
         FreeHumansL = GetFreeHumans();
+        */
+        UpdateHumans();
         if (FreeHumans + WorkingHumans != HumanCount)
         {
-            Debug.Log("Fuck it! Worker don´t fit");
+            UpdateHumans();
+            Debug.Log("Free: " + FreeHumans + " Working: " + WorkingHumans + " all: " + HumanCount);
         }
         UIFoo.Hour_ = Hour;
         UIFoo.Zufriedenheit_ = Satisfaction;
@@ -107,6 +114,11 @@ public class GameController : MonoBehaviour {
         if(lastHour != Hour)
         {
             //Debug.Log("Hour change " + Hour);
+            //UpdateHumans();
+            HumanCount = Humans.Count;
+            FreeHumans = FreeHumansL.Count;
+            WorkingHumans = WorkingHumansL.Count;
+            buttonController.SelectedBuilding.GetComponent<clickforhouseinfos>().updateInfo();
         }
         // Code, which runs once per day
         if (lastDay != Day)
@@ -149,7 +161,6 @@ public class GameController : MonoBehaviour {
             UIFoo.Year_ = Year;
             //Debug.Log("Year change");
         }
-
         if(Satisfaction <= 0)
         {
             Debug.Log("You lose!");
@@ -160,6 +171,7 @@ public class GameController : MonoBehaviour {
     {
         GameObject Human = Instantiate(HumanPrefab, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)) as GameObject;
         Humans.Add(Human);
+        UpdateHumans();
     }
 
     public List<HumanController> GetWorkingHumans()
@@ -167,9 +179,12 @@ public class GameController : MonoBehaviour {
         List<HumanController> temp = new List<HumanController>();
         foreach(GameObject human in Humans)
         {
-            if (human.GetComponent<HumanController>().IsWorking)
+            if (human != null)
             {
-                temp.Add(human.GetComponent<HumanController>());
+                if (human.GetComponent<HumanController>().IsWorking)
+                {
+                    temp.Add(human.GetComponent<HumanController>());
+                }
             }
         }
         return temp;
@@ -180,11 +195,29 @@ public class GameController : MonoBehaviour {
         List<HumanController> temp = new List<HumanController>();
         foreach (GameObject human in Humans)
         {
-            if (!human.GetComponent<HumanController>().IsWorking)
+            if(human != null)
             {
-                temp.Add(human.GetComponent<HumanController>());
+                if (!human.GetComponent<HumanController>().IsWorking)
+                {
+                    temp.Add(human.GetComponent<HumanController>());
+                }
             }
         }
         return temp;
     }
+
+    public void UpdateHumans()
+    {
+        List<GameObject> temp = new List<GameObject>();
+        foreach(GameObject human in Humans)
+        {
+            if(human != null){
+                temp.Add(human);
+            }
+        }
+        Humans = temp;
+        FreeHumansL = GetFreeHumans();
+        WorkingHumansL = GetWorkingHumans();
+    }
+
 }
