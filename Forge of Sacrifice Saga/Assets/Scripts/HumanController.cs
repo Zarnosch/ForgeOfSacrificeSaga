@@ -41,7 +41,6 @@ public class HumanController : MonoBehaviour {
 			moveDirection = movePath.GetPointAtTime(Mathf.Lerp(0, 1, tick));
 		} else if (!reachedTarget && !calculateMovement)
 		{
-			Debug.Log("new target");
 			Building closestBuilding = GetClosestBuilding(currentHumanPos);
 		
 			var randomOtherBuildings = from build in Buildings where build != closestBuilding && build != targetBuilding select build;
@@ -52,7 +51,6 @@ public class HumanController : MonoBehaviour {
 			calculateMovement = true;
 		} else
 		{
-			Debug.Log("duempeln");
 			Vector3 targetPos = targetBuilding.transform.position;
 			Rect duempelArea = new Rect(targetPos.x - duempelOffset, targetPos.y - duempelOffset, duempelOffset*2, duempelOffset*2);
 			movePath = new Bezier(currentHumanPos, 
@@ -69,7 +67,6 @@ public class HumanController : MonoBehaviour {
 		}
 		if (duempeln && (duempelTimer > duempelTimerMax))
 		{
-			Debug.Log("new duempel target");
 			duempelTimer = 0;
 			tick = 0;
 			
