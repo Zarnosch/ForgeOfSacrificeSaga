@@ -18,8 +18,11 @@ public class GameController : MonoBehaviour {
 
     // HumanControlls
     public int FreeHumans;
+    public int WorkingHumans;
     public GameObject HumanPrefab;
     public List<GameObject> Humans = new List<GameObject>();
+    public List<HumanController> WorkingHumansL = new List<HumanController>();
+    public List<HumanController> FreeHumansL = new List<HumanController>();
 
 
     // Building Controlls
@@ -54,7 +57,18 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // Update every frame
+        FreeHumans = GetFreeHumans().Count;
+        WorkingHumans = GetWorkingHumans().Count;
         HumanCount = Humans.Count;
+        WorkingHumansL = GetWorkingHumans();
+        FreeHumansL = GetFreeHumans();
+        if (FreeHumans + WorkingHumans != HumanCount)
+        {
+            Debug.Log("Fuck it! Worker don´t fit");
+        }
+        UIFoo.Hour_ = Hour;
+        UIFoo.Zufriedenheit_ = Satisfaction;
         // Some season handling
         lastHour = Hour;
         // 24 Seconds = 1 Day;
@@ -93,8 +107,6 @@ public class GameController : MonoBehaviour {
         if(lastHour != Hour)
         {
             //Debug.Log("Hour change " + Hour);
-            UIFoo.Hour_ = Hour;
-            UIFoo.Zufriedenheit_ = Satisfaction;
         }
         // Code, which runs once per day
         if (lastDay != Day)
@@ -148,5 +160,31 @@ public class GameController : MonoBehaviour {
     {
         GameObject Human = Instantiate(HumanPrefab, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)) as GameObject;
         Humans.Add(Human);
+    }
+
+    public List<HumanController> GetWorkingHumans()
+    {
+        List<HumanController> temp = new List<HumanController>();
+        foreach(GameObject human in Humans)
+        {
+            if (human.GetComponent<HumanController>().IsWorking)
+            {
+                temp.Add(human.GetComponent<HumanController>());
+            }
+        }
+        return temp;
+    }
+
+    public List<HumanController> GetFreeHumans()
+    {
+        List<HumanController> temp = new List<HumanController>();
+        foreach (GameObject human in Humans)
+        {
+            if (!human.GetComponent<HumanController>().IsWorking)
+            {
+                temp.Add(human.GetComponent<HumanController>());
+            }
+        }
+        return temp;
     }
 }

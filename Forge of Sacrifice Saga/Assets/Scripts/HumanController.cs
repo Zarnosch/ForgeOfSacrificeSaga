@@ -9,6 +9,7 @@ public class HumanController : MonoBehaviour {
 	public float SpeedScale;
 	public bool showGizmos = true;
 	public float duempelOffset;
+    public bool IsWorking;
 	public float duempelTimerMax;
 	
 	[HideInInspector]
@@ -30,6 +31,7 @@ public class HumanController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Buildings = GameObject.Find("GameController").GetComponent<GameController>().Buildings;
+        IsWorking = false;
 	}
 	
 	// Update is called once per frame
