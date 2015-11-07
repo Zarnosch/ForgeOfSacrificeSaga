@@ -26,7 +26,7 @@ public class ButtonController : MonoBehaviour {
         {
             SelectedBuilding.GetComponent<Building>().CurrentWorker += 1;
             GameController.FreeHumansL[0].IsWorking = true;
-            GameController.FreeHumansL[0].TargetBuilding = SelectedBuilding.GetComponent<Building>();
+            GameController.FreeHumansL[0].SetNewTarget(SelectedBuilding.GetComponent<Building>());
         }
         SelectedBuilding.GetComponent<clickforhouseinfos>().updateInfo();
 
