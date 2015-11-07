@@ -10,7 +10,7 @@ public class Building : MonoBehaviour {
     public int CurrentWorker;
     public int Productivity;
     public bool IsActive;
-    public int foodPerDay;
+    public int RessPerDay;
     public BuildingType Type;
 	// Use this for initialization
 	void Start () {
@@ -25,7 +25,6 @@ public class Building : MonoBehaviour {
         {
             CurrentWorker = MaxWorker;
         }
-
-        foodPerDay = CurrentWorker * Productivity;
+        RessPerDay = CurrentWorker * Productivity;
     }
 }

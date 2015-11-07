@@ -12,12 +12,14 @@ public class GameController : MonoBehaviour {
     // Ressources
     public int Food;
     public int Satisfaction;
-    public int Humans;
+    public int HumanCount;
     public int Wood;
     public int SacrificePoints;
 
     // HumanControlls
     private int FreeHumans;
+    public Transform HumanPrefab;
+    private List<GameObject> Humans = new List<GameObject>();
 
     // Building Controlls
     public List<Building> Buildings;
@@ -32,10 +34,12 @@ public class GameController : MonoBehaviour {
         Satisfaction = 100;
         Wood = 0;
         SacrificePoints = 0;
+        makeHuman();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        HumanCount = Humans.Count;
         // Some season handling
         lastHour = Hour;
         // 24 Seconds = 1 Day;
@@ -79,11 +83,19 @@ public class GameController : MonoBehaviour {
         if (lastDay != Day)
         {
             //Debug.Log("Day change");
+            Satisfaction -= 2;
             foreach(Building building in Buildings)
             {
                 if (building.IsActive)
                 {
-                    Food += building.foodPerDay;
+                    if(building.Type == Building.BuildingType.Farm)
+                    {
+                        Food += building.RessPerDay;
+                    }
+                    else if(building.Type == Building.BuildingType.Woodcutter)
+                    {
+                        Wood += building.RessPerDay;
+                    }
                 }
             }
         }
@@ -102,5 +114,16 @@ public class GameController : MonoBehaviour {
         {
             //Debug.Log("Year change");
         }
+
+        if(Satisfaction <= 0)
+        {
+            Debug.Log("You lose!");
+        }
+    }
+
+    public void makeHuman()
+    {
+        GameObject Human = Instantiate(HumanPrefab, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)) as GameObject;
+        Humans.Add(Human);
     }
 }
