@@ -17,29 +17,58 @@ public class GameController : MonoBehaviour {
     public int SacrificePoints;
 
     // HumanControlls
-    private int FreeHumans;
-    public Transform HumanPrefab;
-    private List<GameObject> Humans = new List<GameObject>();
+    public int FreeHumans;
+    public int WorkingHumans;
+    public GameObject HumanPrefab;
+    public List<GameObject> Humans = new List<GameObject>();
+    public List<HumanController> WorkingHumansL = new List<HumanController>();
+    public List<HumanController> FreeHumansL = new List<HumanController>();
+
 
     // Building Controlls
     public List<Building> Buildings;
 
+    // UiAcress
+    UIController UIFoo;
+
     // Use this for initialization
     void Start () {
+        // Get some Gamestuff
+        UIFoo = GameObject.Find("UI").GetComponent<UIController>();
+
+        // Time Initialize
         Day = 1; Week = 1; Month = 1; Year = 1; Hour = 1;
         lastDay = 1; lastWeek = 1; lastMonth = 1; lastYear = 1; lastHour = 0;
+        UIFoo.Day_ = Day; UIFoo.Hour_ = Hour; UIFoo.Week_ = Week; UIFoo.Month_ = Month; UIFoo.Year_ = Year;
         lastGameTime = Time.time;
         // Ressource initialization
         Food = 0;
         Satisfaction = 100;
         Wood = 0;
         SacrificePoints = 0;
-        makeHuman();
+        
+        HumanPrefab.GetComponent<HumanController>().SetNewTarget(Buildings[0]);
+        
+        for (int i = 0; i < 20; i++)
+        {
+            makeHuman();
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        // Update every frame
+        FreeHumans = GetFreeHumans().Count;
+        WorkingHumans = GetWorkingHumans().Count;
         HumanCount = Humans.Count;
+        WorkingHumansL = GetWorkingHumans();
+        FreeHumansL = GetFreeHumans();
+        if (FreeHumans + WorkingHumans != HumanCount)
+        {
+            Debug.Log("Fuck it! Worker don´t fit");
+        }
+        UIFoo.Hour_ = Hour;
+        UIFoo.Zufriedenheit_ = Satisfaction;
         // Some season handling
         lastHour = Hour;
         // 24 Seconds = 1 Day;
@@ -98,20 +127,26 @@ public class GameController : MonoBehaviour {
                     }
                 }
             }
+            UIFoo.Nahrung_ = Food;
+            UIFoo.Holz_ = Wood;
+            UIFoo.Day_ = Day;
         }
         // Code, which runs once per week
         if (lastWeek != Week)
         {
+            UIFoo.Week_ = Week;
             //Debug.Log("Week change");
         }
         // Code, which runs once per month
         if (lastMonth != Month)
         {
+            UIFoo.Month_ = Month;
             //Debug.Log("Month change");
         }
         // Code, which runs once per year
         if (lastYear != Year)
         {
+            UIFoo.Year_ = Year;
             //Debug.Log("Year change");
         }
 
@@ -125,5 +160,31 @@ public class GameController : MonoBehaviour {
     {
         GameObject Human = Instantiate(HumanPrefab, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)) as GameObject;
         Humans.Add(Human);
+    }
+
+    public List<HumanController> GetWorkingHumans()
+    {
+        List<HumanController> temp = new List<HumanController>();
+        foreach(GameObject human in Humans)
+        {
+            if (human.GetComponent<HumanController>().IsWorking)
+            {
+                temp.Add(human.GetComponent<HumanController>());
+            }
+        }
+        return temp;
+    }
+
+    public List<HumanController> GetFreeHumans()
+    {
+        List<HumanController> temp = new List<HumanController>();
+        foreach (GameObject human in Humans)
+        {
+            if (!human.GetComponent<HumanController>().IsWorking)
+            {
+                temp.Add(human.GetComponent<HumanController>());
+            }
+        }
+        return temp;
     }
 }
