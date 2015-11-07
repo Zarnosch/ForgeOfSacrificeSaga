@@ -90,7 +90,7 @@ public class HumanController : MonoBehaviour {
 		targetBuilding = target;//Buildings[Random.Range(0, Buildings.Count())];
 		reachedTarget = false;
 		duempeln = false;
-		newTargetSet = true;	
+		newTargetSet = true;
 	}
 	
 	private Building GetClosestBuilding(Vector3 humanPos) {
