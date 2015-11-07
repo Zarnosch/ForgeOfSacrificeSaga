@@ -27,6 +27,7 @@ public class HumanController : MonoBehaviour {
 	private bool reachedTarget = false;
 	private Bezier movePath = new Bezier(Vector3.zero, Vector3.zero, Vector3.zero, Vector3.zero); 
 	
+	Vector3 tangentPos;
 	
 	// Use this for initialization
 	void Start () {
@@ -54,11 +55,12 @@ public class HumanController : MonoBehaviour {
 		} else
 		{
 			Vector3 targetPos = targetBuilding.transform.position;
-			Rect duempelArea = new Rect(targetPos.x - duempelOffset, targetPos.y - duempelOffset, duempelOffset*2, duempelOffset*2);
-			//movePath = new Bezier(currentHumanPos, 
-			//					new Vector3(duempelArea.x, duempelArea.y, currentHumanPos.z),
-			//					new Vector3(duempelArea.x, duempelArea.y + duempelArea.height, currentHumanPos.z),
-			//					new Vector3(duempelArea.x + duempelArea.width, duempelArea.y, currentHumanPos.z));
+			Rect duempelArea = new Rect(targetPos.x - duempelOffset, targetPos.y - duempelOffset, duempelOffset, duempelOffset);
+			tangentPos = currentHumanPos + (movePath.p3 - movePath.p2);
+			movePath = new Bezier(currentHumanPos,
+								tangentPos,
+								new Vector3(duempelArea.x + Random.Range(-1, 1), duempelArea.y - duempelArea.height + Random.Range(-1, 1), currentHumanPos.z),
+								new Vector3(duempelArea.x + duempelArea.width + Random.Range(-1, 1), duempelArea.y + Random.Range(-1, 1), currentHumanPos.z));
 			calculateMovement = true;
 			duempeln = true;
 		}
@@ -118,6 +120,8 @@ public class HumanController : MonoBehaviour {
 			{
 				Gizmos.DrawSphere(movePath.GetPointAtTime(i), 0.05f);
 			}	
+			Gizmos.color = Color.red;
+			Gizmos.DrawSphere(tangentPos, 0.05f);
 		}
     }
 }
