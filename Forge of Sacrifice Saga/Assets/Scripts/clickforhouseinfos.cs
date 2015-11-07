@@ -5,33 +5,68 @@ using UnityEngine.UI;
 
 public class clickforhouseinfos : MonoBehaviour {
     public GameObject PopupWindow;
+    private GameController GameController;
     private Text Buildingtype;
     private Text MaxWorker;
     private Text CurrentWorker;
+    private Text FreeWorker;
 	// Use this for initialization
-	void OnMouseDown()
+    void start()
     {
         Buildingtype = GameObject.Find("BuildingType").GetComponent<Text>();
         MaxWorker = GameObject.Find("MaxWorker").GetComponent<Text>();
+        GameController = GameObject.Find("GameController").GetComponent<GameController>();
         CurrentWorker = GameObject.Find("CurrentWorker").GetComponent<Text>();
+        FreeWorker = GameObject.Find("FreeWorker").GetComponent<Text>();
+        GameObject.Find("ButtonController").GetComponent<ButtonController>().SelectedBuilding = gameObject;
         Buildingtype.text = "Gebäudetyp: " + GetComponent<Building>().Type.ToString();
-        MaxWorker.text = "Max Worker: " + GetComponent<Building>().MaxWorker;
-        if(GetComponent<Building>().Type == Building.BuildingType.MainBuilding)
+        MaxWorker.text = "Max Arbeiter: " + GetComponent<Building>().MaxWorker;
+        FreeWorker.text = "Freie Arbeiter: " + GameController.FreeHumans;
+        if (GetComponent<Building>().Type == Building.BuildingType.MainBuilding)
         {
-            CurrentWorker.text = "Current Worker: " + GetComponent<Building>().CurrentWorker;
+            CurrentWorker.text = "Arbeiter gesammt: " + (GameController.HumanCount - GameController.FreeHumans);
         }
-        CurrentWorker.text = "Current Worker: " + GetComponent<Building>().CurrentWorker;
-        //Debug.Log("kay bro");
+        else
+        {
+            CurrentWorker.text = "Arbeiter: " + GetComponent<Building>().CurrentWorker;
+        }
+        if (PopupWindow)
+        {
+            PopupWindow.SetActive(true);
+        }
+    }    
+	public void OnMouseDown()
+    {
+        Buildingtype = GameObject.Find("BuildingType").GetComponent<Text>();
+        MaxWorker = GameObject.Find("MaxWorker").GetComponent<Text>();
+        GameController = GameObject.Find("GameController").GetComponent<GameController>();
+        CurrentWorker = GameObject.Find("CurrentWorker").GetComponent<Text>();
+        FreeWorker = GameObject.Find("FreeWorker").GetComponent<Text>();        
+        GameObject.Find("ButtonController").GetComponent<ButtonController>().SelectedBuilding = gameObject;
+        updateInfo();
+    }
+    void Update()   {
+
+    }
+
+    public void updateInfo()
+    {
+        Buildingtype.text = "Gebäudetyp: " + GetComponent<Building>().Type.ToString();
+        MaxWorker.text = "Max Arbeiter: " + GetComponent<Building>().MaxWorker;
+        FreeWorker.text = "Freie Arbeiter: " + GameController.GetFreeHumans().Count;
+        if (GetComponent<Building>().Type == Building.BuildingType.MainBuilding)
+        {
+            CurrentWorker.text = "Arbeiter gesammt: " + (GameController.HumanCount - GameController.GetFreeHumans().Count);
+        }
+        else
+        {
+            CurrentWorker.text = "Arbeiter: " + GetComponent<Building>().CurrentWorker;
+        }
         if (PopupWindow)
         {
             PopupWindow.SetActive(true);
         }
     }
-    void Update()
-    {
-        
-        
-    }
 
-   
+
 }
