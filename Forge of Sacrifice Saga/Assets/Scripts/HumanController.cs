@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class HumanController : MonoBehaviour {
 	
-	private List<Building> Buildings = GameObject.Find("GameController").Buildings;
 	public float attractionRange;
 	public Rect movementArea;
 	public int tickToMoveChange;
@@ -11,16 +10,17 @@ public class HumanController : MonoBehaviour {
 	public float SpeedScale;
 	private int tick = 0;
 	private Vector3 moveDirection = Vector3.zero;
-
+	private List<Building> Buildings = new List<Building>(); 
+	
 	// Use this for initialization
 	void Start () {
-		
+		Buildings = GameObject.Find("GameController").GetComponent<GameController>().Buildings;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		Vector3 currentHumanPos = transform.position;
-		GameObject clostestBuilding = GetClosestBuilding(currentHumanPos);
+		Building clostestBuilding = GetClosestBuilding(currentHumanPos);
 		if (Vector3.Distance(currentHumanPos, clostestBuilding.transform.position) > attractionRange)
 		{
 			moveDirection = Vector3.Normalize(clostestBuilding.transform.position - currentHumanPos); 
@@ -39,9 +39,9 @@ public class HumanController : MonoBehaviour {
 		transform.position += moveDirection * SpeedScale;
 	}
 	
-	private GameObject GetClosestBuilding(Vector3 humanPos) {
+	private Building GetClosestBuilding(Vector3 humanPos) {
 		float closestBuildingDist = 10000.0f;
-		GameObject closestBuilding = null;
+		Building closestBuilding = null;
 		
 		foreach (var building in Buildings)
 		{
