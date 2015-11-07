@@ -14,7 +14,7 @@ public class Building : MonoBehaviour {
     public BuildingType Type;
 	// Use this for initialization
 	void Start () {
-        Productivity = 0;
+        Productivity = 1;
         IsActive = false;
         CurrentWorker = 0;
 	}
