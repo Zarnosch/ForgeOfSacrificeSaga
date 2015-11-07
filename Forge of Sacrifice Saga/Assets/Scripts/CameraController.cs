@@ -36,12 +36,12 @@ public class CameraController : MonoBehaviour {
 		if (mousePos.y < cameraBounds.y) 
 		{
 			//Debug.Log("move up");
-			Camera.main.transform.position += new Vector3(0, cameraMoveSpeed, 0);
+			Camera.main.transform.position -= new Vector3(0, cameraMoveSpeed, 0);
 		}
 		if (mousePos.y > (cameraBounds.y + cameraBounds.height)) 
 		{
 			//Debug.Log("move down");
-			Camera.main.transform.position -= new Vector3(0, cameraMoveSpeed, 0);
+			Camera.main.transform.position += new Vector3(0, cameraMoveSpeed, 0);
 		}
 	}
 }
