@@ -69,47 +69,65 @@ public class ButtonController : MonoBehaviour {
             if (gc.Wood > ub.farmUpgradeLvl * 100)
             {
                 gc.Wood -= ub.farmUpgradeLvl * 100;
-                GameController.GetComponent<UnlockBuildings>().GrantUpgrades(Upgrade1);    
+                GameController.GetComponent<UnlockBuildings>().GrantUpgrades(Upgrade1);
+                //ub.Threshold += ub.ThresholdGroth;
+                ub.FUPanel.SetActive(false);
             }
         } else if (Upgrade1 == Building.BuildingType.Woodcutter)
         {
             if (gc.Wood > ub.woodcutterUpgradeLvl * 100)
             {
                 gc.Wood -= ub.woodcutterUpgradeLvl * 100;
-                GameController.GetComponent<UnlockBuildings>().GrantUpgrades(Upgrade1);    
+                GameController.GetComponent<UnlockBuildings>().GrantUpgrades(Upgrade1);
+                //ub.Threshold += ub.ThresholdGroth;    
+                ub.FUPanel.SetActive(false);
             }
         } else if (Upgrade1 == Building.BuildingType.Fisher)
         {
             if (gc.Wood > ub.fisherUpgradeLvl * 100)
             {
                 gc.Wood -= ub.fisherUpgradeLvl * 100;
-                GameController.GetComponent<UnlockBuildings>().GrantUpgrades(Upgrade1);    
+                GameController.GetComponent<UnlockBuildings>().GrantUpgrades(Upgrade1);
+                //ub.Threshold += ub.ThresholdGroth;
+                ub.FUPanel.SetActive(false);
             }
         } else if (Upgrade1 == Building.BuildingType.Church)
         {
             if (gc.Wood > ub.churchUpgradeLvl * 100)
             {
                 gc.Wood -= ub.churchUpgradeLvl * 100;
-                GameController.GetComponent<UnlockBuildings>().GrantUpgrades(Upgrade1);    
+                GameController.GetComponent<UnlockBuildings>().GrantUpgrades(Upgrade1);
+                //ub.Threshold += ub.ThresholdGroth;    
+                ub.FUPanel.SetActive(false);
             }
         }
     }
     
     public void SelectBuildOption2() {
         GameController gc = GameController.GetComponent<GameController>();
+        UnlockBuildings ub = GameController.GetComponent<UnlockBuildings>();
         if (BuildingOptions2.Type == Building.BuildingType.Farm) 
         {
             if (gc.Wood > 50)
             {
                 gc.Wood -= 50;
                 BuildingOptions2.IsActive = true;
+                ub.ActiveBuildings.Add(BuildingOptions2);
+                ub.NotActiveBuildings.Remove(BuildingOptions2);
+                //ub.Threshold += ub.ThresholdGroth;
+                ub.FUPanel.SetActive(false);
             }    
         } else if (BuildingOptions2.Type == Building.BuildingType.Woodcutter)
         {
             if (gc.Wood > 80)
             {
+                Debug.Log("Upgrade 1");
                 gc.Wood -= 80;
                 BuildingOptions2.IsActive = true;
+                ub.ActiveBuildings.Add(BuildingOptions2);
+                ub.NotActiveBuildings.Remove(BuildingOptions2);
+                //ub.Threshold += ub.ThresholdGroth;
+                ub.FUPanel.SetActive(false);
             }    
         } else if (BuildingOptions2.Type == Building.BuildingType.Fisher) 
         {
@@ -117,6 +135,10 @@ public class ButtonController : MonoBehaviour {
             {
                 gc.Wood -= 150;
                 BuildingOptions2.IsActive = true;
+                ub.ActiveBuildings.Add(BuildingOptions2);
+                ub.NotActiveBuildings.Remove(BuildingOptions2);
+                //ub.Threshold += ub.ThresholdGroth;
+                ub.FUPanel.SetActive(false);
             }    
         } else if (BuildingOptions2.Type == Building.BuildingType.Church)
         {
@@ -124,18 +146,28 @@ public class ButtonController : MonoBehaviour {
             {
                 gc.Wood -= 500;
                 BuildingOptions2.IsActive = true;
+                ub.ActiveBuildings.Add(BuildingOptions2);
+                ub.NotActiveBuildings.Remove(BuildingOptions2);
+                //ub.Threshold += ub.ThresholdGroth;
+                ub.FUPanel.SetActive(false);
             }
         }
     }
     
     public void SelectBuildOption3() {
+        Debug.Log("Upgrade 3");
         GameController gc = GameController.GetComponent<GameController>();
+        UnlockBuildings ub = GameController.GetComponent<UnlockBuildings>();
         if (BuildingOptions3.Type == Building.BuildingType.Farm) 
         {
             if (gc.Wood > 50)
             {
                 gc.Wood -= 50;
                 BuildingOptions3.IsActive = true;
+                ub.ActiveBuildings.Add(BuildingOptions3);
+                ub.NotActiveBuildings.Remove(BuildingOptions3);
+                //ub.Threshold += ub.ThresholdGroth;
+                ub.FUPanel.SetActive(false);
             }    
         } else if (BuildingOptions3.Type == Building.BuildingType.Woodcutter)
         {
@@ -143,6 +175,10 @@ public class ButtonController : MonoBehaviour {
             {
                 gc.Wood -= 80;
                 BuildingOptions3.IsActive = true;
+                ub.ActiveBuildings.Add(BuildingOptions3);
+                ub.NotActiveBuildings.Remove(BuildingOptions3);
+                //ub.Threshold += ub.ThresholdGroth;
+                ub.FUPanel.SetActive(false);
             }    
         } else if (BuildingOptions3.Type == Building.BuildingType.Fisher) 
         {
@@ -150,6 +186,10 @@ public class ButtonController : MonoBehaviour {
             {
                 gc.Wood -= 150;
                 BuildingOptions3.IsActive = true;
+                ub.ActiveBuildings.Add(BuildingOptions3);
+                ub.NotActiveBuildings.Remove(BuildingOptions3);
+                //ub.Threshold += ub.ThresholdGroth;
+                ub.FUPanel.SetActive(false);
             }    
         } else if (BuildingOptions3.Type == Building.BuildingType.Church)
         {
@@ -157,6 +197,10 @@ public class ButtonController : MonoBehaviour {
             {
                 gc.Wood -= 500;
                 BuildingOptions3.IsActive = true;
+                ub.ActiveBuildings.Add(BuildingOptions3);
+                ub.NotActiveBuildings.Remove(BuildingOptions3);
+                //ub.Threshold += ub.ThresholdGroth;
+                ub.FUPanel.SetActive(false);
             }
         }
     }

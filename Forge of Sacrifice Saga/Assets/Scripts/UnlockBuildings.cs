@@ -28,9 +28,15 @@ public class UnlockBuildings : MonoBehaviour {
 	private List<Building> upgradeBuildings = new List<Building>();
 	private List<Building.BuildingType> upgrades = new List<Building.BuildingType>();
 	
+	public bool newLevelUp = false;
+	
+	public GameObject FUPanel;
+	
 	// Use this for initialization
 	void Start () {
 		humanAmount = 5;
+		FUPanel = GameObject.Find("BuildPanel");
+		FUPanel.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -38,8 +44,9 @@ public class UnlockBuildings : MonoBehaviour {
 		
 		if (humanAmount > Threshold)
 		{
-			BuildPanel.SetActive(true);
+			FUPanel.SetActive(true);
 			playerLvl++;
+			Threshold += ThresholdGroth;
 			
 			if (playerLvl >= 5)
 			{
@@ -95,12 +102,15 @@ public class UnlockBuildings : MonoBehaviour {
 			GameObject.Find("Option 3 Text").GetComponent<Text>().text = "Build new\n" + BuildPanel.GetComponent<ButtonController>().BuildingOptions3.Type.ToString() + "\n" + GetCostForType(BuildPanel.GetComponent<ButtonController>().BuildingOptions3.Type) + " Wood";
 			
 			BuildPanel.GetComponent<ButtonController>().Upgrade1 = upgrades[Random.Range(0, upgrades.Count)];
-			GameObject.Find("Option 1 Text").GetComponent<Text>().text = "Upgrade\n" + BuildPanel.GetComponent<ButtonController>().Upgrade1.ToString() + "s\nto +1\n" + GetCostForUpgrade(BuildPanel.GetComponent<ButtonController>().Upgrade1) + " Wood";
-			 
-			Threshold += ThresholdGroth;
-			
-		} else {
-			BuildPanel.SetActive(false);
+			GameObject.Find("Option 1 Text").GetComponent<Text>().text = "Upgrade\n" + BuildPanel.GetComponent<ButtonController>().Upgrade1.ToString() + "s\nto +1\n" + GetCostForUpgrade(BuildPanel.GetComponent<ButtonController>().Upgrade1) + " Wood";	
+		} 
+		
+		foreach (var bu in ActiveBuildings)
+		{
+			if (bu.IsActive)
+			{
+				bu.gameObject.SetActive(true);
+			}
 		}
 	}
 	

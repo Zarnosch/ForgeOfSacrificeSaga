@@ -35,7 +35,6 @@ public class Building : MonoBehaviour {
                 break;
         }
         
-        IsActive = true;
         CurrentWorker = 0;
 	}
 	
@@ -45,6 +44,10 @@ public class Building : MonoBehaviour {
         {
             CurrentWorker = MaxWorker;
         }
-    RessPerDay = CurrentWorker * Productivity * Lvl;
+        RessPerDay = CurrentWorker * Productivity + Lvl * 100;
+        if (!IsActive)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
