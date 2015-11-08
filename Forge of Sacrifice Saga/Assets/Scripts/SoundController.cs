@@ -5,6 +5,7 @@ public class SoundController : MonoBehaviour {
     public AudioSource Firstblood;
     public AudioSource BiteDust;
     public AudioSource FreshMeat;
+    public AudioSource ChildSpawn;
     // Use this for initialization
     void Start () {
 
@@ -26,5 +27,9 @@ public class SoundController : MonoBehaviour {
     public void PlayFreshMeat()
     {
         FreshMeat.Play();
+    }
+    public void PlayFreshChildSpawn()
+    {
+        ChildSpawn.Play();
     }
 }

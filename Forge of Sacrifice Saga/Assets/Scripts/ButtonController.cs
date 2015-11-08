@@ -240,6 +240,7 @@ public class ButtonController : MonoBehaviour {
             SelectedBuilding.GetComponent<clickforhouseinfos>().updateInfo();
             GameController.Food -= 100;
             GameController.Satisfaction -= 5;
+            GameObject.Find("Main Camera").GetComponent<SoundController>().PlayFreshChildSpawn();
         }
     }
 }

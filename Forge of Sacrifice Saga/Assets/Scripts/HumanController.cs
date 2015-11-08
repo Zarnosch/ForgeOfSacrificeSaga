@@ -54,15 +54,27 @@ public class HumanController : MonoBehaviour {
 			calculateMovement = true;
 		} else
 		{
-			Vector3 targetPos = targetBuilding.transform.position;
-			Rect duempelArea = new Rect(targetPos.x - duempelOffset, targetPos.y - duempelOffset, duempelOffset, duempelOffset);
+            Building closestBuilding = GetClosestBuilding(currentHumanPos);
+
+            var randomOtherBuildings = from build in Buildings where build != closestBuilding && build != targetBuilding select build;
+            Building rndBuilding1 = randomOtherBuildings.ElementAt(Random.Range(0, randomOtherBuildings.Count()));
+            Building rndBuilding2 = randomOtherBuildings.ElementAt(Random.Range(0, randomOtherBuildings.Count()));
+
+            movePath = new Bezier(currentHumanPos, rndBuilding1.transform.position, rndBuilding2.transform.position, targetBuilding.transform.position);
+            calculateMovement = true;
+            /*
+            Vector3 targetPos = targetBuilding.transform.position;
+			//Rect duempelArea = new Rect(targetPos.x - duempelOffset, targetPos.y - duempelOffset, duempelOffset, duempelOffset);
 			tangentPos = currentHumanPos + (movePath.p3 - movePath.p2);
-			movePath = new Bezier(currentHumanPos,
-								new Vector3(duempelArea.x + Random.Range(0, 2.0f), duempelArea.y + Random.Range(2.0f, 0), currentHumanPos.z),
-								new Vector3(duempelArea.x + Random.Range(-2.0f, 0), duempelArea.y + Random.Range(0, 2.0f), currentHumanPos.z),
-								new Vector3(duempelArea.x + Random.Range(-2.5f, 1.5f), duempelArea.y + Random.Range(-1.5f, 2.5f), currentHumanPos.z));
+            Random.seed += 200;
+            movePath = new Bezier(currentHumanPos,
+								new Vector3(targetPos.x + Random.Range(-0.2f, 0.2f), targetPos.y + Random.Range(-0.2f, 0.2f), 0),
+								new Vector3(targetPos.x + Random.Range(-1.0f, 1.0f), targetPos.y + Random.Range(-1.0f, 1.0f), 0),
+								new Vector3(targetPos.x + Random.Range(-0.2f, 0.2f), targetPos.y + Random.Range(-0.2f, 0.2f), 0));
 			calculateMovement = true;
+            tangentPos = movePath.p1;
 			duempeln = true;
+            */
 		}
 		
 		if (duempeln)

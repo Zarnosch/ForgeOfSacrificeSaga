@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour {
         // Time Initialize
         Day = 1; Week = 1; Month = 1; Year = 1; Hour = 1;
         lastDay = 1; lastWeek = 1; lastMonth = 1; lastYear = 1; lastHour = 0;
-        UIFoo.Day_ = Day; UIFoo.Hour_ = Hour; UIFoo.Week_ = Week; UIFoo.Month_ = Month; UIFoo.Year_ = Year;
+        UIFoo.Day_ = Day; UIFoo.Hour_ = Hour; UIFoo.Week_ = Week; UIFoo.Month_ = Month; UIFoo.Year_ = Year; UIFoo.Sacrifices_ = SacrificePoints;
         lastGameTime = Time.time;
         // Ressource initialization
         Food = 0;
@@ -76,6 +76,7 @@ public class GameController : MonoBehaviour {
         }
         UIFoo.Hour_ = Hour;
         UIFoo.Zufriedenheit_ = Satisfaction;
+        UIFoo.Sacrifices_ = SacrificePoints;
         // Some season handling
         lastHour = Hour;
         // 24 Seconds = 1 Day;
@@ -124,7 +125,7 @@ public class GameController : MonoBehaviour {
         if (lastDay != Day)
         {
             //Debug.Log("Day change");
-            Satisfaction -= 2;
+            Satisfaction -= HumanCount -3;
             foreach(Building building in Buildings)
             {
                 if (building.IsActive)
@@ -155,6 +156,7 @@ public class GameController : MonoBehaviour {
         if (lastWeek != Week)
         {
             UIFoo.Week_ = Week;
+            Satisfaction -= 10;
             //Debug.Log("Week change");
         }
         // Code, which runs once per month
@@ -171,7 +173,7 @@ public class GameController : MonoBehaviour {
         }
         if(Satisfaction <= 0)
         {
-            Debug.Log("You lose!");
+            Application.LoadLevel("EndState");
         }
     }
 
