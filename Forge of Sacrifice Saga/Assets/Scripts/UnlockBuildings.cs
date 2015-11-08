@@ -34,7 +34,7 @@ public class UnlockBuildings : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		humanAmount = 5;
+		humanAmount = GetComponent<GameController>().HumanCount;
 		FUPanel = GameObject.Find("BuildPanel");
 		FUPanel.SetActive(false);
 		
@@ -50,8 +50,8 @@ public class UnlockBuildings : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-		if (humanAmount > Threshold)
+		humanAmount = GetComponent<GameController>().HumanCount;
+        if (humanAmount > Threshold)
 		{
 			FUPanel.SetActive(true);
 			playerLvl++;
