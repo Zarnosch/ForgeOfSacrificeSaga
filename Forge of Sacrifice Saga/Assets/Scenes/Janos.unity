@@ -2828,7 +2828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .615686297, g: .470588267, b: .34117648, a: .658999979}
+  m_Color: {r: .602941155, g: .327685416, b: .0753676444, a: .939999998}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2930,7 +2930,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 453533179}
         m_MethodName: SelectBuildOption1
         m_Mode: 1
         m_Arguments:
@@ -2955,7 +2955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .558823526, g: .180795848, b: .180795848, a: 1}
+  m_Color: {r: .752941251, g: .43921572, b: .184313729, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3057,7 +3057,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 453533179}
         m_MethodName: SelectBuildOption3
         m_Mode: 1
         m_Arguments:
@@ -3082,7 +3082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .141868502, g: .354915887, b: .602941155, a: 1}
+  m_Color: {r: .78039223, g: .458823562, b: .192156881, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3180,7 +3180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Threshold: 3
   ThresholdGroth: 10
-  BuildPanel: {fileID: 453533178}
+  ButtonCtrl: {fileID: 453533178}
   ActiveBuildings:
   - {fileID: 155253961}
   - {fileID: 266574768}
@@ -3417,7 +3417,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 453533179}
         m_MethodName: SelectBuildOption2
         m_Mode: 1
         m_Arguments:
@@ -3442,7 +3442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .1913286, g: .566176474, b: .141544119, a: 1}
+  m_Color: {r: .752941251, g: .43921572, b: .184313729, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4133,7 +4133,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 10, y: -5}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 161, y: 26}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2113080057
 MonoBehaviour:
