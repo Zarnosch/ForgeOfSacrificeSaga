@@ -58,9 +58,9 @@ public class HumanController : MonoBehaviour {
 			Rect duempelArea = new Rect(targetPos.x - duempelOffset, targetPos.y - duempelOffset, duempelOffset, duempelOffset);
 			tangentPos = currentHumanPos + (movePath.p3 - movePath.p2);
 			movePath = new Bezier(currentHumanPos,
-								tangentPos,
-								new Vector3(duempelArea.x + Random.Range(-0.5f, 0.5f), duempelArea.y - duempelArea.height + Random.Range(-0.5f, 0.5f), currentHumanPos.z),
-								new Vector3(duempelArea.x + duempelArea.width + Random.Range(-0.5f, 0.5f), duempelArea.y + Random.Range(-0.5f, 0.5f), currentHumanPos.z));
+								new Vector3(duempelArea.x + Random.Range(0, 2.0f), duempelArea.y + Random.Range(2.0f, 0), currentHumanPos.z),
+								new Vector3(duempelArea.x + Random.Range(-2.0f, 0), duempelArea.y + Random.Range(0, 2.0f), currentHumanPos.z),
+								new Vector3(duempelArea.x + Random.Range(-2.5f, 1.5f), duempelArea.y + Random.Range(-1.5f, 2.5f), currentHumanPos.z));
 			calculateMovement = true;
 			duempeln = true;
 		}
