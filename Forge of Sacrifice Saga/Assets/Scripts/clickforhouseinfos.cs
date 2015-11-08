@@ -19,7 +19,7 @@ public class clickforhouseinfos : MonoBehaviour {
         CurrentWorker = GameObject.Find("CurrentWorker").GetComponent<Text>();
         FreeWorker = GameObject.Find("FreeWorker").GetComponent<Text>();
         GameObject.Find("ButtonController").GetComponent<ButtonController>().SelectedBuilding = gameObject;
-        Buildingtype.text = "Gebäudetyp: " + GetComponent<Building>().Type.ToString();
+        Buildingtype.text = "Gebäudetyp: " + GetComponent<Building>().Type.ToString() + " LVL: " + GetComponent<Building>().Lvl;
         MaxWorker.text = "Max Arbeiter: " + GetComponent<Building>().MaxWorker;
         FreeWorker.text = "Freie Arbeiter: " + GameController.FreeHumans;
         if (GetComponent<Building>().Type == Building.BuildingType.MainBuilding)
@@ -51,7 +51,7 @@ public class clickforhouseinfos : MonoBehaviour {
 
     public void updateInfo()
     {
-        Buildingtype.text = "Gebäudetyp: " + GetComponent<Building>().Type.ToString();    
+        Buildingtype.text = "Gebäudetyp: " + GetComponent<Building>().Type.ToString() + " LVL: " + GetComponent<Building>().Lvl;    
         MaxWorker.text = "Max Arbeiter: " + GetComponent<Building>().MaxWorker;
         FreeWorker.text = "Freie Arbeiter: " + GameController.GetFreeHumans().Count;
         if (GetComponent<Building>().Type == Building.BuildingType.MainBuilding)
