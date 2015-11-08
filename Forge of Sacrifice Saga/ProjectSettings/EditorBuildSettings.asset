@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenuState.unity
   - enabled: 1
     path: Assets/Scenes/Janos.unity
+  - enabled: 1
+    path: Assets/Scenes/EndState.unity
