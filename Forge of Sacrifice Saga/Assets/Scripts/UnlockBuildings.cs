@@ -9,7 +9,7 @@ public class UnlockBuildings : MonoBehaviour {
 	public int Threshold;
 	public int ThresholdGroth;
 	
-	public GameObject BuildPanel; 
+	public GameObject ButtonCtrl; 
 	
 	public List<Building> ActiveBuildings = new List<Building>();
 	public List<Building> NotActiveBuildings = new List<Building>();
@@ -37,6 +37,15 @@ public class UnlockBuildings : MonoBehaviour {
 		humanAmount = 5;
 		FUPanel = GameObject.Find("BuildPanel");
 		FUPanel.SetActive(false);
+		
+		foreach(var b in GetComponent<GameController>().Buildings) {
+			if (b.IsActive)
+			{
+				ActiveBuildings.Add(b);
+			} else {
+				NotActiveBuildings.Add(b);
+			}
+		}
 	}
 	
 	// Update is called once per frame
@@ -95,14 +104,14 @@ public class UnlockBuildings : MonoBehaviour {
 					break;
 			}
 			
-			BuildPanel.GetComponent<ButtonController>().BuildingOptions2 = upgradeBuildings[Random.Range(0, upgradeBuildings.Count)];
-			GameObject.Find("Option 2 Text").GetComponent<Text>().text = "Build new\n" + BuildPanel.GetComponent<ButtonController>().BuildingOptions2.Type.ToString() + "\n" + GetCostForType(BuildPanel.GetComponent<ButtonController>().BuildingOptions2.Type) + " Wood";
+			ButtonCtrl.GetComponent<ButtonController>().BuildingOptions2 = upgradeBuildings[Random.Range(0, upgradeBuildings.Count)];
+			GameObject.Find("Option 2 Text").GetComponent<Text>().text = "Build new\n" + ButtonCtrl.GetComponent<ButtonController>().BuildingOptions2.Type.ToString() + "\n" + GetCostForType(ButtonCtrl.GetComponent<ButtonController>().BuildingOptions2.Type) + " Wood";
 			
-			BuildPanel.GetComponent<ButtonController>().BuildingOptions3 = upgradeBuildings[Random.Range(0, upgradeBuildings.Count)];
-			GameObject.Find("Option 3 Text").GetComponent<Text>().text = "Build new\n" + BuildPanel.GetComponent<ButtonController>().BuildingOptions3.Type.ToString() + "\n" + GetCostForType(BuildPanel.GetComponent<ButtonController>().BuildingOptions3.Type) + " Wood";
+			ButtonCtrl.GetComponent<ButtonController>().BuildingOptions3 = upgradeBuildings[Random.Range(0, upgradeBuildings.Count)];
+			GameObject.Find("Option 3 Text").GetComponent<Text>().text = "Build new\n" + ButtonCtrl.GetComponent<ButtonController>().BuildingOptions3.Type.ToString() + "\n" + GetCostForType(ButtonCtrl.GetComponent<ButtonController>().BuildingOptions3.Type) + " Wood";
 			
-			BuildPanel.GetComponent<ButtonController>().Upgrade1 = upgrades[Random.Range(0, upgrades.Count)];
-			GameObject.Find("Option 1 Text").GetComponent<Text>().text = "Upgrade\n" + BuildPanel.GetComponent<ButtonController>().Upgrade1.ToString() + "s\nto +1\n" + GetCostForUpgrade(BuildPanel.GetComponent<ButtonController>().Upgrade1) + " Wood";	
+			ButtonCtrl.GetComponent<ButtonController>().Upgrade1 = upgrades[Random.Range(0, upgrades.Count)];
+			GameObject.Find("Option 1 Text").GetComponent<Text>().text = "Upgrade\n" + ButtonCtrl.GetComponent<ButtonController>().Upgrade1.ToString() + "s\nto +1\n" + GetCostForUpgrade(ButtonCtrl.GetComponent<ButtonController>().Upgrade1) + " Wood";	
 		} 
 		
 		foreach (var bu in ActiveBuildings)
