@@ -61,6 +61,19 @@ public class ButtonController : MonoBehaviour {
             SelectedBuilding.GetComponent<clickforhouseinfos>().updateInfo();
             GameController.Satisfaction += 100;
             GameController.Food += 5;
+            if(GameController.SacrificePoints == 0)
+            {
+                GameObject.Find("Main Camera").GetComponent<SoundController>().PlayFirstBlood();
+            }
+            else if(GameController.SacrificePoints % 2 == 0)
+            {
+                GameObject.Find("Main Camera").GetComponent<SoundController>().PlayBiteDust();
+            }
+            else if (GameController.SacrificePoints % 2 == 1)
+            {
+                GameObject.Find("Main Camera").GetComponent<SoundController>().PlayFreshMeat();
+            }
+            GameController.SacrificePoints += 1;
         }
     
     }
