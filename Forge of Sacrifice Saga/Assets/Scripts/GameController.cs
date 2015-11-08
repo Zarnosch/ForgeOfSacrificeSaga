@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour {
         Wood = 0;
         SacrificePoints = 0;
 
-        HumanPrefab.GetComponent<HumanController>().SetNewTarget(Buildings[0]);
+        HumanPrefab.GetComponent<HumanController>().SetNewTarget(GameObject.Find("MainBuilding").GetComponent<Building>());
         
         for (int i = 0; i < 5; i++)
         {
