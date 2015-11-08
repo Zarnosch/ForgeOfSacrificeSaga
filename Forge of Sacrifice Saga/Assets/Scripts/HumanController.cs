@@ -59,8 +59,8 @@ public class HumanController : MonoBehaviour {
 			tangentPos = currentHumanPos + (movePath.p3 - movePath.p2);
 			movePath = new Bezier(currentHumanPos,
 								tangentPos,
-								new Vector3(duempelArea.x + Random.Range(-1, 1), duempelArea.y - duempelArea.height + Random.Range(-1, 1), currentHumanPos.z),
-								new Vector3(duempelArea.x + duempelArea.width + Random.Range(-1, 1), duempelArea.y + Random.Range(-1, 1), currentHumanPos.z));
+								new Vector3(duempelArea.x + Random.Range(-0.5f, 0.5f), duempelArea.y - duempelArea.height + Random.Range(-0.5f, 0.5f), currentHumanPos.z),
+								new Vector3(duempelArea.x + duempelArea.width + Random.Range(-0.5f, 0.5f), duempelArea.y + Random.Range(-0.5f, 0.5f), currentHumanPos.z));
 			calculateMovement = true;
 			duempeln = true;
 		}
@@ -95,6 +95,8 @@ public class HumanController : MonoBehaviour {
 		reachedTarget = false;
 		duempeln = false;
 		newTargetSet = true;
+		calculateMovement = false;
+		tick = 0;
 	}
 	
 	private Building GetClosestBuilding(Vector3 humanPos) {

@@ -4,7 +4,7 @@ using System.Collections;
 public class Building : MonoBehaviour {
     public enum BuildingType
     {
-        Farm, Woodcutter, MainBuilding
+        Farm, Woodcutter, MainBuilding, Fisher, Church
     }
     public int MaxWorker;
     public int CurrentWorker;
@@ -12,6 +12,7 @@ public class Building : MonoBehaviour {
     public bool IsActive;
     public int RessPerDay;
     public BuildingType Type;
+    public int Lvl;
 	// Use this for initialization
 	void Start () {
         Productivity = 1;
@@ -25,6 +26,6 @@ public class Building : MonoBehaviour {
         {
             CurrentWorker = MaxWorker;
         }
-        RessPerDay = CurrentWorker * Productivity;
+    RessPerDay = CurrentWorker * Productivity * Lvl;
     }
 }

@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour {
         
         HumanPrefab.GetComponent<HumanController>().SetNewTarget(Buildings[0]);
         
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 5; i++)
         {
             makeHuman();
         }
