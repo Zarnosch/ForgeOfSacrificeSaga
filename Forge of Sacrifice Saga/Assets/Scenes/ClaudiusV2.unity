@@ -2494,12 +2494,12 @@ MonoBehaviour:
   WorkingHumansL: []
   FreeHumansL: []
   Buildings:
+  - {fileID: 491553993}
   - {fileID: 545041931}
-  - {fileID: 155253961}
   - {fileID: 266574768}
+  - {fileID: 2069126815}
   - {fileID: 155253961}
   - {fileID: 1385346916}
-  - {fileID: 491553993}
 --- !u!4 &1479973669
 Transform:
   m_ObjectHideFlags: 0
@@ -2525,15 +2525,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Threshold: 2
   ThresholdGroth: 5
-  BuildPanel: {fileID: 453533178}
-  ActiveBuildings:
-  - {fileID: 1385346916}
-  - {fileID: 155253961}
-  - {fileID: 266574768}
-  NotActiveBuildings:
-  - {fileID: 2069126815}
-  - {fileID: 545041931}
-  - {fileID: 491553993}
+  ButtonCtrl: {fileID: 453533178}
+  ActiveBuildings: []
+  NotActiveBuildings: []
   farmUpgradeLvl: 1
   woodcutterUpgradeLvl: 1
   fisherUpgradeLvl: 1
