@@ -882,10 +882,10 @@ RectTransform:
   - {fileID: 2063494959}
   m_Father: {fileID: 350181992}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 429, y: 154}
-  m_SizeDelta: {x: -859, y: -370}
+  m_AnchoredPosition: {x: -133, y: -130.5}
+  m_SizeDelta: {x: 265, y: 199}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &348262000
 MonoBehaviour:
@@ -1852,7 +1852,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: .454901993, g: .470588267, b: .188235313, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1901,7 +1901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraMoveSpeed: .200000003
-  moveOffset: 1
+  moveOffset: 10
 --- !u!114 &631083837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2266,10 +2266,10 @@ RectTransform:
   - {fileID: 1890052558}
   m_Father: {fileID: 350181992}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -.25, y: 269}
-  m_SizeDelta: {x: 0, y: -536}
+  m_AnchoredPosition: {x: -.25, y: -15.5}
+  m_SizeDelta: {x: 0, y: 33}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &748535085
 MonoBehaviour:
@@ -2729,10 +2729,10 @@ RectTransform:
   - {fileID: 436494281}
   m_Father: {fileID: 350181992}
   m_RootOrder: 3
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 425.5, y: -233.5}
-  m_SizeDelta: {x: -851, y: -467}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -136.5, y: 51}
+  m_SizeDelta: {x: 273, y: 102}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &894479785
 MonoBehaviour:

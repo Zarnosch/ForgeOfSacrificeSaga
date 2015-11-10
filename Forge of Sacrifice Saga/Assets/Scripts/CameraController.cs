@@ -26,22 +26,22 @@ public class CameraController : MonoBehaviour {
         //cameraBounds.center = Camera.main.transform.position;
         //Debug.Log(cameraBounds.x);
 		Vector2 mousePos = Input.mousePosition;
-		if (mousePos.x < cameraBounds.x && Camera.main.transform.position.x > - 8.5f) 
+		if (mousePos.x < cameraBounds.x) 
 		{
 			//Debug.Log("move left");
 			Camera.main.transform.position -= new Vector3(cameraMoveSpeed, 0, 0);
 		}
-		if (mousePos.x > (cameraBounds.x + cameraBounds.width) && Camera.main.transform.position.x < 8.5f) 
+		if (mousePos.x > (cameraBounds.x + cameraBounds.width)) 
 		{
 			//Debug.Log("move right");
 			Camera.main.transform.position += new Vector3(cameraMoveSpeed, 0, 0);
 		}
-		if (mousePos.y < cameraBounds.y && Camera.main.transform.position.y > -5.5f) 
+		if (mousePos.y < cameraBounds.y) 
 		{
 			//Debug.Log("move up");
 			Camera.main.transform.position -= new Vector3(0, cameraMoveSpeed, 0);
 		}
-		if (mousePos.y > (cameraBounds.y + cameraBounds.height) && Camera.main.transform.position.y < 6f) 
+		if (mousePos.y > (cameraBounds.y + cameraBounds.height)) 
 		{
 			//Debug.Log("move down");
 			Camera.main.transform.position += new Vector3(0, cameraMoveSpeed, 0);
